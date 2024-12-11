@@ -5,8 +5,14 @@ import authRouter from "./routes/auth.routes.js";
 import router from "./routes/form.routes.js";
 
 const app = express();
+const corsOptions = {
+  origin: process.env.FRONTEND_URL,
+  credentials: true,
+};
 
-app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
+console.log(corsOptions);
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
